@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Plugin-Id: nf-fgbio
+Plugin-Version: 1.0.0
+Plugin-Class: nextflow.fgbio.FgbioPlugin
+Plugin-Provider: nextflow
+Plugin-Requires: >=22.10.2
