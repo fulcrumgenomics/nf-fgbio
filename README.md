@@ -43,7 +43,7 @@ channel.of("12M138T", "4M3S12B100T")
 ```
 
 
-The above example creates a channel with a two read structures (each as strings), converts them into a [`fgbio` `ReadStructure` object](https://www.javadoc.io/doc/com.fulcrumgenomics/fgbio_2.13/latest/com/fulcrumgenomics/util/ReadStructure.html) object,
+The above example creates a channel with a two read structures (each as strings), converts them into a [`fgbio` `ReadStructure` object](https://www.javadoc.io/doc/com.fulcrumgenomics/fgbio_2.13/latest/com/fulcrumgenomics/util/ReadStructure.html),
 and returns a vector of _read segments_ foreach read structure.
 
 ```console
@@ -53,8 +53,8 @@ Vector(4M, 3S, 12B, 100T)
 
 ## fromSampleSheet
 
-The `fromSampleSheet` factor method parses a [sample sheet](https://www.javadoc.io/static/com.fulcrumgenomics/fgbio_2.13/2.5.21/com/fulcrumgenomics/illumina/SampleSheet.html) from a file using and returns a list of [`fgbio` `Sample` data objects](https://www.javadoc.io/doc/com.fulcrumgenomics/fgbio_2.13/latest/com/fulcrumgenomics/illumina/Sample.html).
-This allows downstream processes to operate per-sample, with sample metadata store in the `Sample` object.
+The `fromSampleSheet` factory method parses a [sample sheet](https://www.javadoc.io/static/com.fulcrumgenomics/fgbio_2.13/2.5.21/com/fulcrumgenomics/illumina/SampleSheet.html) from a file returns a list of [`fgbio` `Sample` data objects](https://www.javadoc.io/doc/com.fulcrumgenomics/fgbio_2.13/latest/com/fulcrumgenomics/illumina/Sample.html).
+This allows downstream processes to operate per-sample, with sample metadata stored in the `Sample` object.
 For example:
 
 ```nextflow
@@ -83,6 +83,10 @@ Sample_Name_12
 ```
 
 The `lane` option can be specified to restrict to samples from a specific lane.
+
+```nextflow
+channel.fromSampleSheet("/path/to/samplesheet.csv", lane:1)
+```
 
 ## Testing the Plugin Locally
 
