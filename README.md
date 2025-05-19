@@ -85,7 +85,7 @@ Sample_Name_12
 The `lane` option can be specified to restrict to samples from a specific lane.
 
 ```nextflow
-channel.fromSampleSheet("/path/to/samplesheet.csv", lane:1)
+channel.fromSampleSheet("/path/to/samplesheet.csv", lane: 1)
 ```
 
 ## Testing the Plugin Locally
