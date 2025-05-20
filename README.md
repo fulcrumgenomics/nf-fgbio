@@ -28,7 +28,7 @@ plugins { id 'nf-fgbio' }
 
 A [Read Structure](https://github.com/fulcrumgenomics/fgbio/wiki/Read-Structures) refers to a String that describes how the bases in a sequencing run should be allocated into logical reads.
 The `readStructure` function converts a string into an [`fgbio` `ReadStructure` object](https://www.javadoc.io/doc/com.fulcrumgenomics/fgbio_2.13/latest/com/fulcrumgenomics/util/ReadStructure.html).
-This function can be used to validate a read structure, as well as to query and maniuplate the read structure and its read segments.
+This function can be used to validate a read structure, as well as query and manipulate the read structure and its read segments.
 
 For example:
 
