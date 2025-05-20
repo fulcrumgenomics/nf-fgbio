@@ -28,7 +28,7 @@ plugins { id 'nf-fgbio' }
 
 A [Read Structure](https://github.com/fulcrumgenomics/fgbio/wiki/Read-Structures) refers to a String that describes how the bases in a sequencing run should be allocated into logical reads.
 The `readStructure` function converts a string into an [`fgbio` `ReadStructure` object](https://www.javadoc.io/doc/com.fulcrumgenomics/fgbio_2.13/latest/com/fulcrumgenomics/util/ReadStructure.html).
-This function can be used to validate a read structure, as well as query and maniuplate the read structure and its read segments.
+This function can be used to validate a read structure, as well as to query and maniuplate the read structure and its read segments.
 
 For example:
 
@@ -43,8 +43,8 @@ channel.of("12M138T", "4M3S12B100T")
 ```
 
 
-The above example creates a channel with a two read structures (each as strings), converts them into a [`fgbio` `ReadStructure` object](https://www.javadoc.io/doc/com.fulcrumgenomics/fgbio_2.13/latest/com/fulcrumgenomics/util/ReadStructure.html),
-and returns a vector of _read segments_ foreach read structure.
+The above example creates a channel with two read structures (each as strings), converts them into a [`fgbio` `ReadStructure` object](https://www.javadoc.io/doc/com.fulcrumgenomics/fgbio_2.13/latest/com/fulcrumgenomics/util/ReadStructure.html),
+and returns a vector of _read segments_ for each read structure.
 
 ```console
 Vector(12M, 138T)
@@ -53,7 +53,7 @@ Vector(4M, 3S, 12B, 100T)
 
 ## fromSampleSheet
 
-The `fromSampleSheet` factory method parses a [sample sheet](https://www.javadoc.io/static/com.fulcrumgenomics/fgbio_2.13/2.5.21/com/fulcrumgenomics/illumina/SampleSheet.html) from a file returns a list of [`fgbio` `Sample` data objects](https://www.javadoc.io/doc/com.fulcrumgenomics/fgbio_2.13/latest/com/fulcrumgenomics/illumina/Sample.html).
+The `fromSampleSheet` factory method parses a [sample sheet](https://www.javadoc.io/static/com.fulcrumgenomics/fgbio_2.13/2.5.21/com/fulcrumgenomics/illumina/SampleSheet.html) from a file and returns a list of [`fgbio` `Sample` data objects](https://www.javadoc.io/doc/com.fulcrumgenomics/fgbio_2.13/latest/com/fulcrumgenomics/illumina/Sample.html).
 This allows downstream processes to operate per-sample, with sample metadata stored in the `Sample` object.
 For example:
 
