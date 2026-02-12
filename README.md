@@ -3,6 +3,7 @@
 [![CI](https://github.com/fulcrumgenomics/nf-fgbio/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/fulcrumgenomics/nf-fgbio/actions/workflows/test.yml?query=branch%3Amain)
 [![Nextflow](https://img.shields.io/badge/Nextflow%20DSL2-%E2%89%A524.10.0-blue.svg)](https://www.nextflow.io/)
 [![Java Versions](https://img.shields.io/badge/java-17_|_21-blue)](https://github.com/fulcrumgenomics/nf-fgbio)
+[![Nextflow Registry](https://img.shields.io/badge/Nextflow_Registry-nf--fgbio-blue?logo=nextflow)](https://registry.nextflow.io/plugins/nf-fgbio)
 
 
 Use various [fgbio](https://github.com/fulcrumgenomics/fgbio/wiki/Read-Structures) functions and classes in your Nextflow scope.
