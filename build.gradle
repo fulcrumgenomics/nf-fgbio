@@ -6,7 +6,7 @@ version = '1.0.1'
 
 nextflowPlugin {
     nextflowVersion = '24.10.0'
-    provider = 'fulcrumgenomics'
+    provider = 'Fulcrum Genomics'
     className = 'nextflow.fgbio.FgbioPlugin'
     extensionPoints = [
         'nextflow.fgbio.FgbioExtension'
