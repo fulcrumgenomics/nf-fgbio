@@ -1,8 +1,8 @@
 # nf-fgbio
 
 [![CI](https://github.com/fulcrumgenomics/nf-fgbio/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/fulcrumgenomics/nf-fgbio/actions/workflows/test.yml?query=branch%3Amain)
-[![Nextflow](https://img.shields.io/badge/Nextflow%20DSL2-%E2%89%A522.10.2-blue.svg)](https://www.nextflow.io/)
-[![Java Versions](https://img.shields.io/badge/java-8_|_11_|_17_|_21-blue)](https://github.com/fulcrumgenomics/nf-fgbio)
+[![Nextflow](https://img.shields.io/badge/Nextflow%20DSL2-%E2%89%A524.10.0-blue.svg)](https://www.nextflow.io/)
+[![Java Versions](https://img.shields.io/badge/java-17_|_21-blue)](https://github.com/fulcrumgenomics/nf-fgbio)
 
 
 Use various [fgbio](https://github.com/fulcrumgenomics/fgbio/wiki/Read-Structures) functions and classes in your Nextflow scope.
@@ -60,7 +60,7 @@ For example:
 ```nextflow
 include { fromSampleSheet } from 'plugin/nf-fgbio'
 
-channel.fromSampleSheet("./plugins/nf-fgbio/build/resources/main/samplesheet.csv")
+channel.fromSampleSheet("/path/to/samplesheet.csv")
   .map { it -> it.sampleName }
   .view()
 ```
@@ -90,38 +90,14 @@ channel.fromSampleSheet("/path/to/samplesheet.csv", lane: 1)
 
 ## Testing the Plugin Locally
 
-Execute the following to compile and run unit tests for the plugin:
+Execute the following to run unit tests for the plugin:
 
 ```
-make compile
 make test
 ```
 
-To install the plugin for use in local workflows (_e.g._ not internet connected), execute the following:
+To install the plugin for use in local workflows, execute the following:
 
 ```
-make install-local
-```
-
-## Developing the Plugin Locally
-
-
-Execute the following to build the plugin along with Nextflow source files:
-
-```
-make compile-with-nextflow
-```
-
-Test your changes to the plugin on a Nextflow script like:
-
-```bash
-NXF_PLUGINS_DEV="${PWD}/plugins" nextflow/launch.sh run <script.nf> -plugins nf-fgbio
-```
-
-## Publishing to GitHub
-
-After bumping the version of the plugin in the file [`MANIFEST.MF`](./plugins/nf-fgbio/src/resources/META-INF/MANIFEST.MF), execute the following:
-
-```
-GITHUB_TOKEN=... GITHUB_USERNAME=... GITHUB_COMMIT_EMAIL=... make publish-to-github
+make install
 ```

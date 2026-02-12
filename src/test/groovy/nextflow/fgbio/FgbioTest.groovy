@@ -1,5 +1,9 @@
 package nextflow.fgbio
 
+import java.nio.file.Files
+import java.nio.file.Path
+import java.util.jar.Manifest
+
 import nextflow.Channel
 import nextflow.plugin.Plugins
 import nextflow.plugin.TestPluginDescriptorFinder
@@ -8,8 +12,7 @@ import nextflow.plugin.extension.PluginExtensionProvider
 import org.pf4j.PluginDescriptorFinder
 import spock.lang.Shared
 import test.Dsl2Spec
-
-import java.nio.file.Path
+import test.MockScriptRunner
 
 /** Unit tests for the nf-fgbio plugin that use virtual file systems and mocking to run. */
 class FgbioTest extends Dsl2Spec{
@@ -28,8 +31,14 @@ class FgbioTest extends Dsl2Spec{
             protected PluginDescriptorFinder createPluginDescriptorFinder() {
                 return new TestPluginDescriptorFinder() {
                     @Override
-                    protected Path getManifestPath(Path pluginPath) {
-                        return pluginPath.resolve('build/resources/main/META-INF/MANIFEST.MF')
+                    protected Manifest readManifestFromDirectory(Path pluginPath) {
+                        if (!Files.isDirectory(pluginPath))
+                            return null
+                        def manifestPath = pluginPath.resolve('build/tmp/jar/MANIFEST.MF')
+                        if (!Files.exists(manifestPath))
+                            return null
+                        def input = Files.newInputStream(manifestPath)
+                        return new Manifest(input)
                     }
                 }
             }
@@ -112,7 +121,7 @@ class FgbioTest extends Dsl2Spec{
         when:
             String SCRIPT = '''
                 include { fromSampleSheet } from 'plugin/nf-fgbio'
-                Channel.fromSampleSheet("src/resources/samplesheet.csv")
+                Channel.fromSampleSheet("src/test/resources/samplesheet.csv")
             '''
         and:
             def result = new MockScriptRunner([:]).setScript(SCRIPT).execute()
